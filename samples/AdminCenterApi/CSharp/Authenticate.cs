@@ -25,11 +25,11 @@ class Authenticate
 
         // Peek inside the access token (this is just for education purposes; in actual API calls we'll just pass it as one long string)
         string middlePart = accessToken.Split('.')[1];
-        string middlePartPadded = middlePart + "".PadLeft(4-middlePart.Length%4, '=');
-        string middlePartDecoded = Encoding.UTF8.GetString(Convert.FromBase64String(middlePartPadded));
-        string middlePartDecodedPretty = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(middlePartDecoded), Formatting.Indented);
-        Console.WriteLine("Contents of the access token:");
-        Console.WriteLine(middlePartDecodedPretty);
+        // string middlePartPadded = middlePart + "".PadLeft(4-middlePart.Length%4, '=');
+        // string middlePartDecoded = Encoding.UTF8.GetString(Convert.FromBase64String(middlePartPadded));
+        // string middlePartDecodedPretty = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(middlePartDecoded), Formatting.Indented);
+        // Console.WriteLine("Contents of the access token:");
+        // Console.WriteLine(middlePartDecodedPretty);
 
         return accessToken;
     }
