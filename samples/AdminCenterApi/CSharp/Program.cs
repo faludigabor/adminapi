@@ -29,8 +29,8 @@ namespace CSharp
 
 
             // await RapidStart.GetRapidStartPackages(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606");
-            await RapidStart.DeletePackage(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606","FITS.DEMO");
-            await RapidStart.CreatePackage(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606","FITS.DEMO","FITS.DEMO");
+            // await RapidStart.DeletePackage(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606","FITS.DEMO");
+            // await RapidStart.CreatePackage(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606","FITS.DEMO","FITS.DEMO");
             await RapidStart.UploadPackage(accessToken,"PreviewV17UK","v1.0","669ba303-5ff1-ea11-bba8-000d3a299606","c:\\falu\\workspace\\PackageFITS.DEMO.rapidstart","FITS.DEMO");
             // Manage apps
             // await Apps.GetInstalledAppsAsync(accessToken, "MyProd");

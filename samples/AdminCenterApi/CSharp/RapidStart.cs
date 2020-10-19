@@ -59,15 +59,21 @@ namespace CSharp
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            httpClient.DefaultRequestHeaders.Add("If-Match","*");
+            httpClient.DefaultRequestHeaders.Add("accept-encoding","gzip, deflate");
             // PATCH https://api.businesscentral.dynamics.com/v2.0/{environment name}/api/microsoft/automation/{apiVersion}/companies({{companyId}})/configurationPackages('{SAMPLE}')/file('{SAMPLE}')/content
             var FileStream = new FileStream(FileName, FileMode.Open);
             
             var content = new StreamContent(FileStream);
+            await content.ReadAsStreamAsync();
             content.Headers.ContentType =
                 new MediaTypeHeaderValue("application/octet-stream");
-            HttpResponseMessage response = await httpClient.PatchAsync($"https://api.businesscentral.dynamics.com/v2.0/{environmentName}/api/microsoft/automation/{apiVersion}/companies({companyId})/configurationPackages('{packageCode}')/file('{packageCode}')/content", content);
+                // content.Headers.Add("If-Match","*");
+                // content.Headers.Add("accept-encoding","gzip, deflate");
+            HttpResponseMessage response = await httpClient
+            .PatchAsync($"https://api.businesscentral.dynamics.com/v2.1/{environmentName}/api/microsoft/automation/{apiVersion}/companies({companyId})/configurationPackages('{packageCode}')/file('{packageCode}')/content", content);
             string responseBody = await response.Content.ReadAsStringAsync();
             Console.WriteLine(JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody), Formatting.Indented));
         }
-    }
+    }     
 }
